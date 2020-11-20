@@ -1,6 +1,6 @@
 package gameCommons;
 
-import java.awt.Color;
+import java.awt.*;
 import java.util.Random;
 
 import graphicalElements.Element;
@@ -9,6 +9,8 @@ import graphicalElements.IFroggerGraphics;
 public class Game {
 
 	public final Random randomGen = new Random();
+	public int time;
+	private boolean GF;
 
 	// Caracteristique de la partie
 	public final int width;
@@ -16,7 +18,7 @@ public class Game {
 	public final int minSpeedInTimerLoops;
 	public final double defaultDensity;
 
-	// Lien aux objets utilisés
+	// Lien aux objets utilisï¿½s
 	private IEnvironment environment;
 	private IFrog frog;
 	private IFroggerGraphics graphic;
@@ -30,7 +32,7 @@ public class Game {
 	 * @param height
 	 *            hauteur en cases
 	 * @param minSpeedInTimerLoop
-	 *            Vitesse minimale, en nombre de tour de timer avant déplacement
+	 *            Vitesse minimale, en nombre de tour de timer avant dï¿½placement
 	 * @param defaultDensity
 	 *            densite de voiture utilisee par defaut pour les routes
 	 */
@@ -44,11 +46,12 @@ public class Game {
 	}
 
 	/**
-	 * Lie l'objet frog à la partie
+	 * Lie l'objet frog ï¿½ la partie
 	 * 
 	 * @param frog
 	 */
 	public void setFrog(IFrog frog) {
+
 		this.frog = frog;
 	}
 
@@ -58,6 +61,7 @@ public class Game {
 	 * @param environment
 	 */
 	public void setEnvironment(IEnvironment environment) {
+
 		this.environment = environment;
 	}
 
@@ -66,29 +70,45 @@ public class Game {
 	 * @return l'interface graphique
 	 */
 	public IFroggerGraphics getGraphic() {
+
 		return graphic;
 	}
 
 	/**
-	 * Teste si la partie est perdue et lance un écran de fin approprié si tel
+	 * Teste si la partie est perdue et lance un ï¿½cran de fin appropriï¿½ si tel
 	 * est le cas
 	 * 
 	 * @return true si le partie est perdue
 	 */
 	public boolean testLose() {
-		// TODO
+		if (!environment.isSafe(frog.getPosition())) {
+			System.out.println("LOOSER !");
+			graphic.endGameScreen("You lost, your score " + time);
+			return true;
+		}
 		return false;
 	}
 
 	/**
-	 * Teste si la partie est gagnee et lance un écran de fin approprié si tel
+	 * Teste si la partie est gagnee et lance un ï¿½cran de fin appropriï¿½ si tel
 	 * est le cas
 	 * 
-	 * @return true si la partie est gagnée
+	 * @return true si la partie est gagnï¿½e
 	 */
 	public boolean testWin() {
-		// TODO
+		if (environment.isWinningPosition(frog.getPosition())) {
+			System.out.println("GAME WINNER !");
+			graphic.endGameScreen("GAME WINNER !" + time);
+			return true;
+		}
 		return false;
+	}
+
+	/**
+	 * Donne la position de l'Ã©cran dans l'environnement.
+	 */
+	public int getScreenPosition() {
+		return environment.getScreenPosition();
 	}
 
 	/**
