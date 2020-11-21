@@ -6,7 +6,7 @@ import util.Case;
 import util.Direction;
 
 public class Frog implements IFrog {
-	
+
 	private Game game;
 	public Case pos;
 	private Direction dir;
