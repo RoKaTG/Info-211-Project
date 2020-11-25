@@ -32,4 +32,9 @@ public interface IFroggerGraphics {
      */
     public void endGameScreen(String message);
 
+    /**
+     * Affiche un timer en haut à gauche de l'écran
+     * @param time le temps en secondes
+     */
+    public void timer(float time);
 }

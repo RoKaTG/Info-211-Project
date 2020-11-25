@@ -3,7 +3,7 @@ package graphicalElements;
 import javax.swing.*;
 
 import gameCommons.IFrog;
-import util.Direction;
+import gameCommons.Direction;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -85,6 +85,11 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		label.setSize(this.getSize());
 		frame.getContentPane().add(label);
 		frame.repaint();
+
+	}
+
+	@Override
+	public void timer(float time) {
 
 	}
 

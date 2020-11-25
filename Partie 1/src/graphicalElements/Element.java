@@ -2,7 +2,7 @@ package graphicalElements;
 
 import java.awt.*;
 
-import util.Case;
+import gameCommons.Case;
 
 
 public class Element extends Case {
