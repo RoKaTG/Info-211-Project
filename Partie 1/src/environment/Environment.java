@@ -43,6 +43,7 @@ public class Environment implements IEnvironment {
      * @return True si c'est la case de fin
      */
     public boolean isWinningPosition(Case c) {
+
         return (c.ord == game.height - 1);
     }
 
@@ -59,7 +60,7 @@ public class Environment implements IEnvironment {
                         frog.move(frog.getDirection());
                 }
                 if (frog.getPosition().ord == lane.ord && lane.isRiver) {
-                    lane.moveFrog(frog);
+                    lane.moveF(frog);
                 }
             }
             lane.update();

@@ -49,7 +49,7 @@ public class Frog implements IFrog {
 				break;
 			case left:
 				if (pos.absc > 0)
-					pos = new Case(pos.absc + 1, pos.ord);
+					pos = new Case(pos.absc - 1, pos.ord);
 				break;
 			case right:
 				if (pos.absc < game.width - 1)
@@ -59,6 +59,11 @@ public class Frog implements IFrog {
 				break;
 		}
 		this.dir = key;
+	}
+
+	@Override
+	public void moveR(boolean leftToRight) {
+
 	}
 
 	/**

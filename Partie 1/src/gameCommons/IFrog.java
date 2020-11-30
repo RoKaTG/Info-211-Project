@@ -15,9 +15,15 @@ public interface IFrog {
 	public Direction getDirection();
 	
 	/**
-	 * D�place la grenouille dans la direction donn�e et teste la fin de partie
+	 * D�place frog
 	 * @param key
 	 */
 	public void move(Direction key);
 
+	/**
+	 * Déplace frog dans riviere
+	 * @param leftToRight
+	 */
+	public void moveR(boolean leftToRight);
 }
+

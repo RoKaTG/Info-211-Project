@@ -8,7 +8,7 @@ import gameCommons.Game;
 
 import graphicalElements.Element;
 import gameCommons.Direction;
-import java.awt.*;
+import java.awt.Color;
 
 public class Bird {
 
