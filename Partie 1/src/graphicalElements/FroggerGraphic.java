@@ -1,6 +1,7 @@
 package graphicalElements;
 
 import javax.swing.*;
+import javax.imageio.ImageIO;
 
 import gameCommons.IFrog;
 import gameCommons.Direction;
@@ -8,7 +9,10 @@ import gameCommons.Direction;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import	java.io.IOException;
+import java.io.File;
 
 public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListener {
 	private ArrayList<Element> elementsToDisplay;
@@ -17,6 +21,9 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 	private int height;
 	private IFrog frog;
 	private JFrame frame;
+	private float time;
+	private ArrayList<BufferedImage> templates;
+	private ArrayList<IFrog> frogs;
 
 	public FroggerGraphic(int width, int height) {
 		this.width = width;
@@ -33,7 +40,14 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 		frame.pack();
 		frame.setVisible(true);
 		frame.addKeyListener(this);
+		templates = new ArrayList<BufferedImage>();
+		try {
+			Templates();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
+
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -66,14 +80,17 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 	}
 
 	public void clear() {
+
 		this.elementsToDisplay.clear();
 	}
 
 	public void add(Element e) {
+
 		this.elementsToDisplay.add(e);
 	}
 
 	public void setFrog(IFrog frog) {
+
 		this.frog = frog;
 	}
 
@@ -91,6 +108,15 @@ public class FroggerGraphic extends JPanel implements IFroggerGraphics, KeyListe
 	@Override
 	public void timer(float time) {
 
+		this.time = time;
+	}
+
+	/**
+	 * importe les templates jeu
+	 */
+	private void Templates() throws IOException {
+		String path = System.getProperty("user.dir" + "/src");
+		templates.add(ImageIO.read(new File(path + "/templates/frog.png")));
 	}
 
 }
